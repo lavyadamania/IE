@@ -22,7 +22,7 @@ A web-based Faculty Feedback System developed as a Web Programming project.
 ## Team Members
 
 - Tanvi Kankariya
-- [Friend's Name]
+- Lavya Damania
 
 ## Project Structure
 

@@ -1,0 +1,14 @@
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+*credentials*.env
+
+# Local server and editor files
+.vscode/
+*.log
+Thumbs.db
+Desktop.ini
+
+# Composer dependencies if reintroduced
+backend/vendor/

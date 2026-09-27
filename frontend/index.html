@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="tcet-header">
+        <img src="assets/tcet-header.jpeg" alt="TCET Department of Information Technology">
+    </header>
+
+    <main class="container">
+        <img src="assets/tcet-watermark.png" class="watermark" alt="TCET Watermark">
+
+        <div class="content">
+            <h1>🎓 Faculty Feedback</h1>
+            <form id="feedbackForm" action="../backend/submit.php" method="POST">
+                <label for="faculty">Faculty Name</label>
+                <select id="faculty" name="faculty" required>
+                    <option value="">Select Faculty</option>
+                    <option value="Mrs. Trupti Shah">Mrs. Trupti Shah</option>
+                    <option value="Mr. Saurabh Srivastava">Mr. Saurabh Srivastava</option>
+                    <option value="Mrs. Apeksha Waghmare">Mrs. Apeksha Waghmare</option>
+                    <option value="Mrs. Tamanna Upadhyay">Mrs. Tamanna Upadhyay</option>
+                </select>
+
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Select Subject</option>
+                    <option value="Web Programming">Web Programming</option>
+                    <option value="Computer Network Security">Computer Network Security</option>
+                    <option value="Automata Theory">Automata Theory</option>
+                    <option value="SSIC">SSIC</option>
+                </select>
+
+                <label>Teaching Quality</label>
+                <div class="stars">
+                    <input type="radio" id="teaching5" name="teaching" value="5">
+                    <label for="teaching5">★</label>
+                    <input type="radio" id="teaching4" name="teaching" value="4">
+                    <label for="teaching4">★</label>
+                    <input type="radio" id="teaching3" name="teaching" value="3">
+                    <label for="teaching3">★</label>
+                    <input type="radio" id="teaching2" name="teaching" value="2">
+                    <label for="teaching2">★</label>
+                    <input type="radio" id="teaching1" name="teaching" value="1">
+                    <label for="teaching1">★</label>
+                </div>
+
+                <label>Communication</label>
+                <div class="stars">
+                    <input type="radio" id="communication5" name="communication" value="5">
+                    <label for="communication5">★</label>
+                    <input type="radio" id="communication4" name="communication" value="4">
+                    <label for="communication4">★</label>
+                    <input type="radio" id="communication3" name="communication" value="3">
+                    <label for="communication3">★</label>
+                    <input type="radio" id="communication2" name="communication" value="2">
+                    <label for="communication2">★</label>
+                    <input type="radio" id="communication1" name="communication" value="1">
+                    <label for="communication1">★</label>
+                </div>
+
+                <label>Subject Knowledge</label>
+                <div class="stars">
+                    <input type="radio" id="knowledge5" name="knowledge" value="5">
+                    <label for="knowledge5">★</label>
+                    <input type="radio" id="knowledge4" name="knowledge" value="4">
+                    <label for="knowledge4">★</label>
+                    <input type="radio" id="knowledge3" name="knowledge" value="3">
+                    <label for="knowledge3">★</label>
+                    <input type="radio" id="knowledge2" name="knowledge" value="2">
+                    <label for="knowledge2">★</label>
+                    <input type="radio" id="knowledge1" name="knowledge" value="1">
+                    <label for="knowledge1">★</label>
+                </div>
+
+                <div class="overall-box">
+                    <p>Overall Rating</p>
+                    <div id="overallRating">⭐ Select all three ratings</div>
+                </div>
+                
+                <input type="hidden" id="overall" name="overall">
+                <p id="ratingMessage"></p>
+
+                <label for="comments">Comments</label>
+                <textarea
+                    id="comments"
+                    name="comments"
+                    maxlength="250"
+                    placeholder="Write your feedback here..."
+                ></textarea>
+
+                <p id="counter">Characters: 0/250</p>
+                <p class="privacy">
+                    🔒 Your feedback will be used for academic improvement purposes.
+                </p>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        Thakur College of Engineering and Technology<br>
+        Department of Information Technology<br>
+        © 2026 TCET | Faculty Feedback System
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -69,7 +69,32 @@ label {
     color: #5d4075;
 }
 
+.anonymous-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.anonymous-option input {
+    width: 16px;
+    height: 16px;
+    accent-color: #5d4075;
+}
+
+.field-hint {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+}
+
 select,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
 textarea {
     width: 100%;
     padding: 12px;
@@ -81,12 +106,20 @@ textarea {
 }
 
 select:hover,
+input[type="text"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
 textarea:hover {
     background: #fffdf3;
     border-color: #dfc34a;
 }
 
 select:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
 textarea:focus {
     outline: none;
     border-color: #d5b52f;
@@ -150,6 +183,14 @@ textarea {
     text-align: center;
     font-weight: bold;
     color: #5d4075;
+}
+
+.form-message {
+    min-height: 24px;
+    margin: 12px 0;
+    color: #a12626;
+    font-weight: bold;
+    text-align: center;
 }
 
 #counter {

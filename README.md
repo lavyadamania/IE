@@ -1,6 +1,6 @@
 # Faculty Feedback System
 
-A clean project structure for the Student 1 + Student 2 faculty feedback application.
+A web-based faculty feedback application for collecting ratings and comments about faculty members and subjects.
 
 ## Project structure
 
@@ -17,6 +17,13 @@ A clean project structure for the Student 1 + Student 2 faculty feedback applica
     - tcet-header.jpeg
     - tcet-watermark.png
 
+## Technology stack
+
+- HTML and CSS for the feedback form and dashboard presentation
+- JavaScript for rating calculation, character counting, and client-side validation
+- PHP for server-side request handling
+- MongoDB for persistent feedback storage
+
 ## Run locally
 
 1. Start Apache in XAMPP and make sure MongoDB is running.
@@ -30,6 +37,14 @@ A clean project structure for the Student 1 + Student 2 faculty feedback applica
 ## Notes
 
 - The frontend form submits to ../backend/submit.php.
+- Faculty and subject selections are checked against the allowed values.
+- Each response stores the student's name, class, division, and roll number.
+- TCET email ID and a 10-digit Indian phone number are required for each response.
+- Students can submit anonymously; anonymous records hide their name, email, phone number, and roll number on the dashboard while retaining class and division for reporting.
+- Student identity is scoped by class, division, and roll number, so the same roll number can be used independently in different divisions.
+- Each rating must be an integer from 1 to 5.
+- The overall rating is calculated from the three category ratings and verified on the server.
+- Comments are optional and limited to 250 characters.
 - The backend connects to MongoDB at `mongodb://127.0.0.1:27017` by default.
 - For Atlas, set the `MONGODB_URI` environment variable before starting Apache.
 - Set `MONGODB_URI` and `MONGODB_DB` to use another MongoDB server or database.

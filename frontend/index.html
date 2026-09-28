@@ -18,6 +18,70 @@
         <div class="content">
             <h1>🎓 Faculty Feedback</h1>
             <form id="feedbackForm" action="../backend/submit.php" method="POST">
+                <label for="studentName">Student Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    name="student_name"
+                    minlength="2"
+                    maxlength="100"
+                    pattern="[A-Za-z][A-Za-z .'-]{1,99}"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+                <label for="className">Class</label>
+                <select id="className" name="class_name" required>
+                    <option value="">Select Class</option>
+                    <option value="SE IT">SE IT</option>
+                    <option value="TE IT">TE IT</option>
+                    <option value="BE IT">BE IT</option>
+                </select>
+
+                <label for="division">Division</label>
+                <select id="division" name="division" required>
+                    <option value="">Select Division</option>
+                    <option value="A">Division A</option>
+                    <option value="B">Division B</option>
+                    <option value="C">Division C</option>
+                    <option value="D">Division D</option>
+                </select>
+
+                <label for="rollNumber">Roll Number</label>
+                <input
+                    type="number"
+                    id="rollNumber"
+                    name="roll_number"
+                    min="1"
+                    max="100"
+                    step="1"
+                    placeholder="Enter roll number"
+                    required
+                >
+
+                <label for="email">TCET Email ID</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    maxlength="100"
+                    placeholder="yourname@tcetmumbai.in"
+                    required
+                >
+
+                <label for="phone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    inputmode="numeric"
+                    pattern="[6-9][0-9]{9}"
+                    minlength="10"
+                    maxlength="10"
+                    placeholder="10-digit mobile number"
+                    required
+                >
+
                 <label for="faculty">Faculty Name</label>
                 <select id="faculty" name="faculty" required>
                     <option value="">Select Faculty</option>
@@ -37,8 +101,8 @@
                 </select>
 
                 <label>Teaching Quality</label>
-                <div class="stars">
-                    <input type="radio" id="teaching5" name="teaching" value="5">
+                <div class="stars" role="radiogroup" aria-label="Teaching Quality">
+                    <input type="radio" id="teaching5" name="teaching" value="5" required>
                     <label for="teaching5">★</label>
                     <input type="radio" id="teaching4" name="teaching" value="4">
                     <label for="teaching4">★</label>
@@ -51,8 +115,8 @@
                 </div>
 
                 <label>Communication</label>
-                <div class="stars">
-                    <input type="radio" id="communication5" name="communication" value="5">
+                <div class="stars" role="radiogroup" aria-label="Communication">
+                    <input type="radio" id="communication5" name="communication" value="5" required>
                     <label for="communication5">★</label>
                     <input type="radio" id="communication4" name="communication" value="4">
                     <label for="communication4">★</label>
@@ -65,8 +129,8 @@
                 </div>
 
                 <label>Subject Knowledge</label>
-                <div class="stars">
-                    <input type="radio" id="knowledge5" name="knowledge" value="5">
+                <div class="stars" role="radiogroup" aria-label="Subject Knowledge">
+                    <input type="radio" id="knowledge5" name="knowledge" value="5" required>
                     <label for="knowledge5">★</label>
                     <input type="radio" id="knowledge4" name="knowledge" value="4">
                     <label for="knowledge4">★</label>
@@ -85,6 +149,7 @@
                 
                 <input type="hidden" id="overall" name="overall">
                 <p id="ratingMessage"></p>
+                <p id="formMessage" class="form-message" role="alert" aria-live="polite"></p>
 
                 <label for="comments">Comments</label>
                 <textarea
@@ -95,6 +160,11 @@
                 ></textarea>
 
                 <p id="counter">Characters: 0/250</p>
+                <label class="anonymous-option" for="anonymous">
+                    <input type="checkbox" id="anonymous" name="anonymous" value="1">
+                    Submit this feedback anonymously
+                </label>
+                <p class="field-hint">Your name, email, phone number, and roll number will be hidden on the dashboard.</p>
                 <p class="privacy">
                     🔒 Your feedback will be used for academic improvement purposes.
                 </p>

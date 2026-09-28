@@ -139,6 +139,13 @@ if ($mongoManager === null) {
         <table>
             <tr>
                 <th>ID</th>
+                <th>Student</th>
+                <th>Class</th>
+                <th>Division</th>
+                <th>Roll No.</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Feedback Type</th>
                 <th>Faculty</th>
                 <th>Subject</th>
                 <th>Teaching</th>
@@ -151,8 +158,16 @@ if ($mongoManager === null) {
             <?php if (count($feedbackRows) > 0): ?>
                 <?php foreach ($feedbackRows as $document): ?>
                     <?php $row = (array)$document; ?>
+                    <?php $isAnonymous = !empty($row['is_anonymous']); ?>
                     <tr>
                         <td><?php echo htmlspecialchars((string)$row['_id']); ?></td>
+                        <td><?php echo htmlspecialchars($isAnonymous ? 'Anonymous' : ($row['student_name'] ?? '')); ?></td>
+                        <td><?php echo htmlspecialchars($row['class_name'] ?? ''); ?></td>
+                        <td><?php echo htmlspecialchars($row['division'] ?? ''); ?></td>
+                        <td><?php echo htmlspecialchars($isAnonymous ? '-' : (string)($row['roll_number'] ?? '')); ?></td>
+                        <td><?php echo htmlspecialchars($isAnonymous ? '-' : ($row['email'] ?? '')); ?></td>
+                        <td><?php echo htmlspecialchars($isAnonymous ? '-' : ($row['phone'] ?? '')); ?></td>
+                        <td><?php echo $isAnonymous ? 'Anonymous' : 'Identified'; ?></td>
                         <td><?php echo htmlspecialchars($row['faculty']); ?></td>
                         <td><?php echo htmlspecialchars($row['subject']); ?></td>
                         <td>⭐ <?php echo htmlspecialchars($row['teaching']); ?></td>
@@ -164,11 +179,11 @@ if ($mongoManager === null) {
                 <?php endforeach; ?>
             <?php elseif ($mongoManager === null || isset($databaseError)): ?>
                 <tr>
-                    <td colspan="8">Database query failed. Refresh the page and try again.</td>
+                    <td colspan="15">Database query failed. Refresh the page and try again.</td>
                 </tr>
             <?php else: ?>
                 <tr>
-                    <td colspan="8">No feedback submitted yet.</td>
+                    <td colspan="15">No feedback submitted yet.</td>
                 </tr>
             <?php endif; ?>
         </table>

@@ -18,11 +18,24 @@ if ($mongoManager === null) {
         $averageResult = $mongoManager->executeCommand($mongoDatabase, new MongoDB\Driver\Command([
             'aggregate' => $mongoCollection,
             'pipeline' => [
-                ['$group' => ['_id' => null, 'average' => ['$avg' => '$overall']]],
+                ['$group' => [
+                    '_id' => null,
+                    'average' => [
+                        '$avg' => [
+                            '$convert' => [
+                                'input' => '$overall',
+                                'to' => 'double',
+                                'onError' => null,
+                                'onNull' => null,
+                            ],
+                        ],
+                    ],
+                ]],
             ],
             'cursor' => new stdClass(),
         ]))->toArray();
-        $averageValue = $averageResult[0]->cursor->firstBatch[0]->average ?? 0;
+        $averageValue = $averageResult[0]->average
+            ?? ($averageResult[0]->cursor->firstBatch[0]->average ?? 0);
         $averageRating = $averageValue
             ? round((float)$averageValue, 1)
             : 0.0;

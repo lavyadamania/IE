@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Faculty Feedback System Report</title>
+<style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #ddd; color: #111; font-family: "Times New Roman", Times, serif; }
+    .page {
+        position: relative;
+        width: 210mm;
+        min-height: 297mm;
+        height: 297mm;
+        min-height: 297mm;
+        padding: 17mm 13mm 17mm;
+        margin: 0 auto 8mm;
+        background: #fff;
+        page-break-after: always;
+        overflow: hidden;
+    }
+    .page:last-child { page-break-after: auto; }
+    .page + .page { page-break-before: always; }
+    .page-header { height: 31mm; border-bottom: 1px solid #555; margin-bottom: 7mm; text-align: center; }
+    .page-header img { width: 100%; max-height: 27mm; object-fit: contain; }
+    .page-footer { position: absolute; bottom: 9mm; left: 13mm; right: 13mm; text-align: center; font-size: 10pt; color: #333; }
+    h1 { margin: 0 0 8mm; text-align: center; font-size: 22pt; }
+    h2 { margin: 2mm 0 4mm; font-size: 16pt; }
+    h3 { margin: 4mm 0 2mm; color: #4c7daf; font-size: 13pt; }
+    p { margin: 0 0 3.5mm; font-size: 11pt; line-height: 1.32; text-align: justify; }
+    ul, ol { margin: 2mm 0 4mm 7mm; padding-left: 7mm; font-size: 11pt; line-height: 1.45; }
+    .cover { text-align: center; padding-top: 7mm; }
+    .cover .cover-title { margin-top: 11mm; font-size: 23pt; font-weight: bold; }
+    .cover .cover-topic { margin-top: 10mm; font-size: 19pt; font-weight: bold; }
+    .cover .team { width: 100%; margin: 9mm auto 8mm; border-collapse: collapse; font-size: 12pt; }
+    .cover .team th, .cover .team td { border: 1px solid #111; padding: 3mm; }
+    .cover .team th { background: #e9e6e1; }
+    .cover .mentor { margin-top: 9mm; font-size: 15pt; font-weight: bold; line-height: 1.3; }
+    .index table, .data-table { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
+    .index th, .index td, .data-table th, .data-table td { border: 1px solid #222; padding: 2.4mm; vertical-align: top; }
+    .index th, .data-table th { background: #e9e6e1; text-align: center; }
+    .architecture { display: flex; flex-direction: column; align-items: center; margin: 4mm 0; font-size: 11pt; font-weight: bold; }
+    .architecture .box { width: 70%; padding: 2.5mm; text-align: center; border: 1px solid #333; border-radius: 3mm; }
+    .architecture .user { background: #dceeff; }
+    .architecture .front { background: #dff3e0; }
+    .architecture .back { background: #f8dddd; }
+    .architecture .db { background: #fff0ca; }
+    .arrow { padding: 1mm; font-size: 14pt; }
+    .workflow { border-left: 2px solid #555; margin: 5mm 0 5mm 25mm; padding-left: 12mm; font-size: 12pt; line-height: 1.8; }
+    .workflow div::before { content: "-> "; font-weight: bold; }
+    .callout { margin: 5mm 0; padding: 4mm; border: 1px solid #9db8d5; background: #f1f7fc; font-size: 11pt; line-height: 1.45; }
+    .screen { border: 1px solid #999; background: #f5f5f5; padding: 5mm; margin: 5mm auto; max-width: 90%; }
+    .screen .real-site-image { width: 100%; max-height: 65mm; object-fit: contain; object-position: top; display: block; }
+    .page:nth-of-type(14) p { margin-bottom: 2mm; }
+    .page:nth-of-type(14) ul { margin-bottom: 2mm; line-height: 1.35; }
+    .page:nth-of-type(14) .screen { margin: 1mm auto; padding: 2mm; }
+    .screen .bar { height: 7mm; background: #5d4075; margin: -5mm -5mm 5mm; }
+    .screen .fake-form { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; font-family: Arial, sans-serif; font-size: 8pt; }
+    .screen .fake-form span { border: 1px solid #bbb; padding: 2mm; background: white; }
+    .screen .fake-form .wide { grid-column: 1 / 3; }
+    .signature { margin-top: 12mm; text-align: right; font-size: 11pt; }
+    @media print {
+        body { background: #fff; }
+        .page { margin: 0; }
+    }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <div style="font-size: 21pt; font-weight: bold; margin-top: 18mm;">Report</div>
+    <div style="font-size: 18pt; font-weight: bold; margin-top: 13mm;">On</div>
+    <div style="font-size: 24pt; font-weight: bold; margin-top: 13mm;">Innovative Examination (IE)</div>
+    <div style="font-size: 17pt; font-weight: bold; margin-top: 13mm;">Of</div>
+    <div style="font-size: 15pt; font-weight: bold; margin-top: 10mm;">Subject: Web Programming<br>Academic Year: 2026-27</div>
+    <div class="cover-title">Title of Topic:</div>
+    <div class="cover-topic">Faculty Feedback Web Application</div>
+    <div style="font-size: 15pt; font-weight: bold; margin-top: 14mm;">Submitted by:</div>
+    <table class="team">
+        <tr><th>Roll Number</th><th>Name</th></tr>
+        <tr><td>15</td><td>Yash Chavan</td></tr>
+        <tr><td>51</td><td>Ravishankar Kanaki</td></tr>
+    </table>
+    <div class="mentor">Under the Guidance of<br>Faculty Mentor<br>Ms. Apeksha Waghmare</div>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 1</div>
+</section>
+
+<section class="page index">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>INDEX</h1>
+    <table>
+        <tr><th>Sr. No.</th><th>Contents</th><th>Page No.</th></tr>
+        <tr><td>1</td><td>Abstract</td><td>3</td></tr>
+        <tr><td>2</td><td>Introduction</td><td>4</td></tr>
+        <tr><td>3</td><td>Problem Statement and Objectives</td><td>5</td></tr>
+        <tr><td>4</td><td>System Requirements and Technology Stack</td><td>6</td></tr>
+        <tr><td>5</td><td>System Architecture and Workflow</td><td>7</td></tr>
+        <tr><td>6</td><td>Frontend Design and JavaScript Interaction</td><td>9</td></tr>
+        <tr><td>7</td><td>PHP and MongoDB Backend</td><td>11</td></tr>
+        <tr><td>8</td><td>CRUD Operations and Document Design</td><td>12</td></tr>
+        <tr><td>9</td><td>Validation, Privacy and Results</td><td>13</td></tr>
+        <tr><td>10</td><td>Applications and Future Scope</td><td>14</td></tr>
+        <tr><td>11</td><td>Conclusion</td><td>15</td></tr>
+        <tr><td>12</td><td>Acknowledgement and References</td><td>15</td></tr>
+    </table>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 2</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>1. Abstract</h1>
+    <p>The Faculty Feedback Web Application is a web-based system developed to collect structured feedback from students about faculty members and subjects. Traditional feedback methods such as paper forms or informal messages can make it difficult to organize responses, calculate ratings, and protect student identity.</p>
+    <p>The application provides a centralized digital form where students select their class, division, roll number, faculty member, subject, and ratings for teaching quality, communication, and subject knowledge. Students can also provide comments and contact details when required.</p>
+    <p>The application is developed using HTML, CSS, JavaScript, PHP, and MongoDB. HTML creates the feedback form, CSS controls the presentation, JavaScript performs client-side validation and calculates the overall rating, and PHP performs server-side validation and database operations.</p>
+    <p>The system supports anonymous feedback. When anonymity is selected, the student's name, email ID, phone number, and roll number are removed before storage. Class and division are retained for academic reporting without exposing the student's identity on the dashboard.</p>
+    <p>A separate dashboard displays submitted feedback, total responses, average rating, student classification, and anonymous or identified status. The project demonstrates the practical integration of frontend development, client-side interaction, server-side programming, validation, privacy, and database management.</p>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 3</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>2. Introduction</h1>
+    <p>Faculty feedback is an important part of academic improvement. Students can provide useful information about teaching quality, communication, subject knowledge, and their overall learning experience. When feedback is collected manually, records may be incomplete, difficult to compare, and difficult to protect.</p>
+    <p>The proposed Faculty Feedback Web Application provides an organized approach to collecting and reviewing student responses. Students submit feedback through an online form, while the PHP backend validates the request and stores the response in MongoDB.</p>
+    <p>The system follows a client-server architecture. The client side consists of HTML, CSS, and JavaScript. HTML defines the form, CSS provides the visual design, and JavaScript provides rating interaction, character counting, and immediate validation.</p>
+    <p>The server side is implemented using PHP. PHP receives the submitted form data, validates every important field again, calculates the trusted overall rating, removes identifying data for anonymous feedback, and inserts the document into MongoDB.</p>
+    <p>The application separates feedback creation from feedback management. A student uses the feedback form, while an authorized staff member can open the dashboard to review stored responses and summary statistics.</p>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 4</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>3. Problem Statement and Objectives</h1>
+    <h2>3.1 Problem Statement</h2>
+    <p>Manual faculty feedback processes can create difficulties in collecting accurate and consistent responses. Students may omit important information, ratings may be entered outside the expected range, and feedback records may not be easy to summarize.</p>
+    <p>Student privacy is another important concern. A feedback system should allow students to share honest opinions without unnecessarily exposing their personal information. The system must also ensure that invalid requests cannot be inserted by bypassing the browser.</p>
+    <h2>3.2 Objectives</h2>
+    <ol>
+        <li>To develop a web-based faculty feedback system.</li>
+        <li>To provide a simple and user-friendly student feedback form.</li>
+        <li>To collect class, division, roll number, and student details.</li>
+        <li>To support independent roll numbers across different divisions.</li>
+        <li>To validate feedback in both JavaScript and PHP.</li>
+        <li>To calculate a reliable overall rating from three rating categories.</li>
+        <li>To store feedback records in a structured MongoDB collection.</li>
+        <li>To provide an anonymous submission option.</li>
+        <li>To display feedback summaries through a dashboard.</li>
+        <li>To demonstrate practical use of HTML, CSS, JavaScript, PHP, and MongoDB.</li>
+    </ol>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 5</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>4. System Requirements and Technology Stack</h1>
+    <h3>4.1 Technology Stack</h3>
+    <table class="data-table">
+        <tr><th>Technology</th><th>Role</th><th>Usage in Project</th></tr>
+        <tr><td>HTML</td><td>Frontend structure</td><td>Feedback form and page structure</td></tr>
+        <tr><td>CSS</td><td>Presentation</td><td>Layout, typography, colors, and responsive styling</td></tr>
+        <tr><td>JavaScript</td><td>Client-side logic</td><td>Validation, rating calculation, and character counter</td></tr>
+        <tr><td>PHP</td><td>Backend</td><td>Request validation and database operations</td></tr>
+        <tr><td>MongoDB</td><td>Database</td><td>Persistent feedback document storage</td></tr>
+        <tr><td>XAMPP / PHP</td><td>Local server</td><td>Apache/PHP development environment</td></tr>
+    </table>
+    <h3>4.2 Software Requirements</h3>
+    <ul>
+        <li>XAMPP with PHP and the MongoDB PHP extension</li>
+        <li>MongoDB running locally or a MongoDB Atlas connection</li>
+        <li>Modern web browser</li>
+        <li>Code editor or IDE</li>
+    </ul>
+    <h3>4.3 Project Structure</h3>
+    <div class="callout"><b>faculty_feedback/</b><br>|-- backend/ db.php, submit.php, dashboard.php, connection_test.php<br>|-- frontend/ index.html, script.js, style.css<br>|-- frontend/assets/ TCET header and watermark images<br>|-- README.md</div>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 6</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>5. System Architecture and Workflow</h1>
+    <p>The application follows a layered architecture in which each technology performs a specific responsibility.</p>
+    <div class="architecture">
+        <div class="box user">STUDENT<br>Enters feedback</div><div class="arrow">|<br>v</div>
+        <div class="box front">HTML + CSS + JavaScript<br>Form, interaction, and validation</div><div class="arrow">|<br>v</div>
+        <div class="box back">PHP<br>Server-side validation and processing</div><div class="arrow">|<br>v</div>
+        <div class="box db">MongoDB<br>Feedback collection</div>
+    </div>
+    <h3>5.1 Presentation Layer</h3>
+    <p>HTML and CSS provide the student-facing feedback form, TCET branding, rating controls, contact fields, and anonymous submission option.</p>
+    <h3>5.2 Interaction Layer</h3>
+    <p>JavaScript calculates the overall score from the three selected ratings, counts comment characters, and prevents invalid form submission.</p>
+    <h3>5.3 Backend Layer</h3>
+    <p>PHP validates the request independently of the browser, calculates the trusted rating, handles anonymous privacy, and writes the response to MongoDB.</p>
+    <h3>5.4 Database Layer</h3>
+    <p>MongoDB stores each feedback response as a document in the feedback collection.</p>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 7</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h2>5.5 Feedback Workflow</h2>
+    <div class="workflow">
+        <div>Student opens the feedback form.</div>
+        <div>Student selects class, division, and roll number.</div>
+        <div>Student enters contact details and selects faculty and subject.</div>
+        <div>Student selects teaching, communication, and knowledge ratings.</div>
+        <div>JavaScript calculates the overall rating.</div>
+        <div>JavaScript validates the form before submission.</div>
+        <div>PHP validates the submitted request again.</div>
+        <div>PHP removes identifying data if anonymous mode is selected.</div>
+        <div>PHP inserts the feedback document into MongoDB.</div>
+        <div>Dashboard displays the response and summary statistics.</div>
+    </div>
+    <h2>5.6 Division-wise Student Identity</h2>
+    <p>Student identity is treated as a combination of class, division, and roll number. This allows the same roll number to be used independently in different divisions. For example, TE IT Division A Roll No. 15 and TE IT Division B Roll No. 15 are separate student records.</p>
+    <div class="callout"><b>Class + Division + Roll Number</b> is the logical student identity used by the feedback form. The current form supports SE IT, TE IT, BE IT and Divisions A, B, C, and D.</div>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 8</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>6. Frontend Design and JavaScript Interaction</h1>
+    <h2>6.1 Faculty Feedback Form</h2>
+    <p>The feedback page is the main entry point for students. It contains fields for student identity, TCET email, phone number, faculty, subject, three rating categories, comments, and anonymous submission.</p>
+    <div class="screen"><img class="real-site-image" src="report-form.png" alt="Live faculty feedback form"></div>
+    <h2>6.2 Rating Interaction</h2>
+    <p>Each rating category uses a five-star control. When a student selects a rating, the page displays the selected value and recalculates the average overall rating.</p>
+    <h2>6.3 Character Counter</h2>
+    <p>The comments field displays the current character count and limits feedback comments to 250 characters.</p>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 9</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>6.4 Validation</h1>
+    <p>Validation is performed at two levels. Browser-side validation gives immediate feedback to the student, while PHP validation protects the application when a request is sent without using the normal form.</p>
+    <table class="data-table">
+        <tr><th>Field</th><th>Validation Rule</th></tr>
+        <tr><td>Student name</td><td>Required, 2-100 characters, letters and normal name punctuation</td></tr>
+        <tr><td>Class</td><td>Must be one of the configured classes</td></tr>
+        <tr><td>Division</td><td>Must be one of A, B, C, or D</td></tr>
+        <tr><td>Roll number</td><td>Required integer from 1 to 100</td></tr>
+        <tr><td>Email</td><td>Required valid email address, maximum 100 characters</td></tr>
+        <tr><td>Phone</td><td>Exactly 10 digits beginning with 6, 7, 8, or 9</td></tr>
+        <tr><td>Faculty and subject</td><td>Must match an allowed selection</td></tr>
+        <tr><td>Ratings</td><td>Each rating must be an integer from 1 to 5</td></tr>
+        <tr><td>Overall rating</td><td>Must match the calculated average of the three ratings</td></tr>
+        <tr><td>Comments</td><td>Optional, maximum 250 characters</td></tr>
+    </table>
+    <div class="callout">The server does not trust the hidden overall field. It calculates the value again from the three category ratings before saving the response.</div>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 10</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>7. Privacy and Anonymous Feedback</h1>
+    <h2>7.1 Anonymous Submission</h2>
+    <p>The form provides a checkbox at the end of the form named "Submit this feedback anonymously". This lets a student decide whether the submitted feedback should be identified or anonymous after entering all details.</p>
+    <p>When selected, PHP changes the stored name to Anonymous and removes the email, phone number, and roll number before inserting the MongoDB document. The dashboard also masks these fields and marks the response as Anonymous.</p>
+    <h2>7.2 Reporting Information</h2>
+    <p>Class and division remain available for academic reporting. This allows staff to compare feedback across divisions without exposing the student's name or contact details. The privacy behavior is therefore practical for class-wise analysis while protecting individual identity.</p>
+    <h2>7.3 Dashboard Presentation</h2>
+    <p>The dashboard shows total feedback and average rating, followed by a table containing student classification, feedback type, faculty, subject, individual ratings, overall rating, and comments.</p>
+    <div class="callout"><b>Privacy principle:</b> anonymous mode is applied before database insertion, so identifying values are not merely hidden visually; they are not retained in the anonymous record.</div>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 11</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>8. PHP and MongoDB Backend</h1>
+    <table class="data-table">
+        <tr><th>PHP File</th><th>Operation</th><th>Purpose</th></tr>
+        <tr><td>db.php</td><td>Connection</td><td>Connects PHP to MongoDB and checks the database</td></tr>
+        <tr><td>submit.php</td><td>INSERT</td><td>Validates and stores a new feedback document</td></tr>
+        <tr><td>dashboard.php</td><td>COUNT, AGGREGATE, FIND</td><td>Displays statistics and feedback records</td></tr>
+        <tr><td>connection_test.php</td><td>CHECK</td><td>Confirms that the MongoDB connection works</td></tr>
+    </table>
+    <h2>8.1 Database Connection</h2>
+    <p>The db.php file creates a MongoDB driver manager using the MONGODB_URI environment variable. The default local URI is mongodb://127.0.0.1:27017 and the default database is faculty_feedback.</p>
+    <h2>8.2 Server-side Processing</h2>
+    <p>The submit.php file accepts POST requests only. It validates allowed classes, divisions, faculty members and subjects, checks numeric limits, verifies contact fields, calculates the overall rating, applies anonymous privacy, and inserts the final document.</p>
+    <h2>8.3 Error Handling</h2>
+    <p>Invalid requests receive an HTTP 422 response. Database connection failures receive an HTTP 500 response. Invalid request methods receive an HTTP 405 response.</p>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 12</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>9. Database Design and Results</h1>
+    <h2>9.1 Feedback Document Design</h2>
+    <table class="data-table">
+        <tr><th>Field</th><th>Type</th><th>Purpose</th></tr>
+        <tr><td>student_name</td><td>String</td><td>Student name or Anonymous</td></tr>
+        <tr><td>class_name</td><td>String</td><td>Academic class</td></tr>
+        <tr><td>division</td><td>String</td><td>Student division</td></tr>
+        <tr><td>roll_number</td><td>Integer or null</td><td>Division-scoped roll number</td></tr>
+        <tr><td>email</td><td>String or null</td><td>Student email, removed for anonymous records</td></tr>
+        <tr><td>phone</td><td>String or null</td><td>Student phone, removed for anonymous records</td></tr>
+        <tr><td>faculty</td><td>String</td><td>Selected faculty member</td></tr>
+        <tr><td>subject</td><td>String</td><td>Selected subject</td></tr>
+        <tr><td>teaching</td><td>Integer</td><td>Teaching quality rating from 1 to 5</td></tr>
+        <tr><td>communication</td><td>Integer</td><td>Communication rating from 1 to 5</td></tr>
+        <tr><td>knowledge</td><td>Integer</td><td>Subject knowledge rating from 1 to 5</td></tr>
+        <tr><td>overall</td><td>Decimal</td><td>Calculated average rating</td></tr>
+        <tr><td>comments</td><td>String</td><td>Optional feedback comments</td></tr>
+        <tr><td>is_anonymous</td><td>Boolean</td><td>Identifies privacy mode</td></tr>
+        <tr><td>feedback_date</td><td>UTC date</td><td>Submission timestamp</td></tr>
+    </table>
+    <h2>9.2 Database Operations</h2>
+    <p>The system creates feedback using MongoDB insert operations, reads records using find operations, counts responses, and calculates the average using an aggregation pipeline. The dashboard displays the resulting records in reverse chronological order.</p>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 13</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>10. Implementation and Results</h1>
+    <p>The application was implemented and tested locally using XAMPP PHP and MongoDB. The frontend loads from the PHP development server or Apache, while the backend communicates with the MongoDB database.</p>
+    <h2>10.1 Feedback Submission</h2>
+    <p>After valid information is submitted, the PHP backend creates a feedback document. The overall rating is calculated from the three category ratings and the submission is displayed through the dashboard.</p>
+    <h2>10.2 Validation Testing</h2>
+    <ul>
+        <li>Empty required fields are rejected by the browser and backend.</li>
+        <li>Invalid email addresses are rejected.</li>
+        <li>Invalid phone numbers are rejected.</li>
+        <li>Roll numbers outside 1-100 are rejected.</li>
+        <li>Ratings outside 1-5 are rejected.</li>
+        <li>Comments longer than 250 characters are rejected.</li>
+        <li>Manipulated overall ratings are recalculated and rejected.</li>
+    </ul>
+    <h2>10.3 Privacy Testing</h2>
+    <p>Identified submissions display student details. Anonymous submissions display Anonymous and do not retain identifying contact fields or roll number in the stored document.</p>
+    <div class="screen"><img class="real-site-image" src="report-dashboard.png" alt="Live faculty feedback dashboard"></div>
+    <div class="callout">The connection test endpoint confirmed that MongoDB is connected successfully through XAMPP PHP.</div>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 14</div>
+</section>
+
+<section class="page">
+    <div class="page-header"><img src="frontend/assets/tcet-header.jpeg" alt="TCET Department of Information Technology"></div>
+    <h1>11. Applications and Future Scope</h1>
+    <h3>11.1 Applications</h3>
+    <ul>
+        <li>Faculty teaching feedback in colleges and universities</li>
+        <li>Subject-wise academic quality analysis</li>
+        <li>Division-wise feedback comparison</li>
+        <li>Anonymous student opinion collection</li>
+        <li>Department-level teaching improvement reports</li>
+    </ul>
+    <h3>11.2 Future Scope</h3>
+    <ol>
+        <li>Add student and staff authentication.</li>
+        <li>Restrict dashboard access to authorized faculty or administrators.</li>
+        <li>Add search, filters, charts, and exportable reports.</li>
+        <li>Prevent duplicate submissions for the same student and subject when required.</li>
+        <li>Add configurable classes, divisions, faculty, and subjects through an admin panel.</li>
+        <li>Add semester and academic-year selection.</li>
+        <li>Add stronger audit logging and privacy controls.</li>
+        <li>Deploy the application with a production MongoDB service.</li>
+    </ol>
+    <h1 style="margin-top: 12mm;">12. Conclusion</h1>
+    <p>The Faculty Feedback Web Application demonstrates the integration of HTML, CSS, JavaScript, PHP, and MongoDB in a practical academic system. It provides a structured way for students to submit ratings and comments while giving staff a dashboard for review.</p>
+    <p>Client-side and server-side validation improve data quality, division-wise identity supports organized reporting, and anonymous mode protects student privacy. The project provides practical experience in web forms, database connectivity, input validation, privacy-aware design, and dashboard presentation.</p>
+    <h2 style="margin-top: 9mm;">Acknowledgement</h2>
+    <p>We express our sincere gratitude to our faculty mentor and the Department of Information Technology for providing guidance and support during the development and testing of this Web Programming project.</p>
+    <div class="signature">Submitted by:<br>Yash Chavan and Ravishankar Kanaki</div>
+    <div class="page-footer">TCET - Department of Information Technology - Web Programming | 15</div>
+</section>
+
+</body>
+</html>

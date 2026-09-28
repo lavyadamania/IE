@@ -53,9 +53,11 @@ if ($mongoManager === null) {
             background: #f3eef8;
             padding: 40px;
             margin: 0;
+            overflow-x: hidden;
         }
 
         .container {
+            width: 100%;
             max-width: 1100px;
             margin: auto;
             background: white;
@@ -98,10 +100,16 @@ if ($mongoManager === null) {
             font-weight: 600;
         }
 
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 25px;
+        }
+
         table {
             width: 100%;
+            min-width: 1050px;
             border-collapse: collapse;
-            margin-top: 25px;
         }
 
         th, td {
@@ -136,7 +144,8 @@ if ($mongoManager === null) {
             </div>
         </div>
 
-        <table>
+        <div class="table-wrapper">
+            <table>
             <tr>
                 <th>ID</th>
                 <th>Student</th>
@@ -186,7 +195,8 @@ if ($mongoManager === null) {
                     <td colspan="15">No feedback submitted yet.</td>
                 </tr>
             <?php endif; ?>
-        </table>
+            </table>
+        </div>
     </div>
 </body>
 </html>
